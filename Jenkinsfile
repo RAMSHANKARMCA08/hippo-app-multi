@@ -3,8 +3,7 @@ pipeline {
     stages {
         stage('Client 1') {
 		agent {  node { label
-                client1 {
-                reuseNode true
+                'client1'
 		}
 			      }
             }
@@ -12,9 +11,7 @@ pipeline {
         }
 	 stage('Client 2') {
 		agent {  node { label
-                client2 {
-                reuseNode true
-                }
+                'client2'
 			      }
             }
             	steps { sh 'echo "Client 2"' } 
