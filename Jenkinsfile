@@ -4,13 +4,13 @@ pipeline{
         stage("Client 1"){
             agent { label 'client1' }
             steps{
-		    steps { sh 'echo "Client 1"' } 
+		    steps { sh 'touch client1' } 
             }
         }
 	    stage("Client 2"){
             agent { label 'client2' }
             steps{
-		    steps { sh 'echo "Client 2"' } 
+		    steps { sh 'touch client2' } 
             }
         }
     }
