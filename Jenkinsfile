@@ -7,8 +7,6 @@ pipeline{
 		    sh 'echo $PWD' 
             }
         }
-    }
-    stages {
         stage("Step 2"){
             agent { label 'java' }
             steps{
