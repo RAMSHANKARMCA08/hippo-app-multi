@@ -10,7 +10,7 @@ pipeline{
         stage("Step 2"){
             agent { label 'java' }
             steps{
-		    sh 'sudo java.txt' 
+		    sh 'sudo touch java.txt' 
             }
 	 
     }
