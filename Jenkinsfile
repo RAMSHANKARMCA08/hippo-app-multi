@@ -4,7 +4,7 @@ pipeline{
         stage("Client 1"){
             agent { label 'client1' }
             steps{
-		    sh 'touch /home/centos/client1.txt' 
+		    sh 'echo $PWD' 
             }
         }
     }
