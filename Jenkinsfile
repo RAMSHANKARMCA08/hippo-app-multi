@@ -7,12 +7,6 @@ pipeline{
 		    steps { sh 'touch /home/centos/client1.txt' } 
             }
         }
-	    stage("Client 2"){
-            agent { label 'client2' }
-            steps{
-		    steps { sh 'touch client2' } 
-            }
-        }
     }
 }
 
