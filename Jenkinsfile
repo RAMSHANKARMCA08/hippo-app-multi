@@ -7,7 +7,7 @@ pipeline {
 	stage('Build') {
 		steps {  
 			dir("/var/lib/docker/volumes/jenkins_home/_data/workspace/hippo-app/") {
-			sh "***********************************"
+			sh "echo '##############################3'"
 			sh "$pwd"
 				//withDockerContainer(image:'maven:3.5.0-jdk-8-alpine')
 			//	{       sh "$pwd"
