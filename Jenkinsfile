@@ -6,7 +6,7 @@ pipeline {
         }
 	stage('Build') {
 		steps {  
-			dir("webapp") {
+			dir("/var/lib/docker/volumes/jenkins_home/_data/workspace/hippo-app") {
 			withDockerContainer(args: '-v jenkins_home:/var/jenkins_home', image:'maven:3.5.0-jdk-8-alpine')
 				{       sh "$pwd"
 					sh "mvn clean install"}
