@@ -6,9 +6,9 @@ pipeline {
         }
 	stage('Build') {
 		steps {  
-			withDockerContainer(args: '-it --rm --name my-maven-project -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven', image: 'maven:3.3-jdk-8')
-				{ sh "mvn clean install"}	
-				}				
+			withDockerContainer("maven:3.5.0-jdk-8-alpine") { sh "mvn clean install"}
+       			 archiveArtifacts '**/target/spring-boot-web-jsp-1.0.war'			
     }
 	}
+}
 }
