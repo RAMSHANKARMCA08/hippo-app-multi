@@ -7,7 +7,7 @@ pipeline {
 	stage('Build') {
 		steps {  
 			dir("/var/lib/docker/volumes/jenkins_home/_data/workspace") {
-			sh "********************8Below is printed by me ***************"
+			sh "***********************************"
 			sh "$pwd"
 				//withDockerContainer(image:'maven:3.5.0-jdk-8-alpine')
 			//	{       sh "$pwd"
