@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
         stage('Git') {
-            steps { git 'https://github.com/RAMSHANKARMCA08/hippo-app.git' }
+            steps { git 'https://github.com/RAMSHANKARMCA08/hippo-app-multi.git' }
         }
 	stage('Build') {
 		steps {  
