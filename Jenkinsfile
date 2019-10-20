@@ -14,6 +14,7 @@ pipeline {
        			// archiveArtifacts '**/target/spring-boot-web-jsp-1.0.war'			
 			//}			
 			}
+		}
 	}
 }
 }
