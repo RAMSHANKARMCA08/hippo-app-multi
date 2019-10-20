@@ -9,7 +9,7 @@ pipeline {
 			dir("/var/lib/docker/volumes/jenkins_home/_data/workspace/hippo-app") {
 			withDockerContainer(args: '-v jenkins_home:/var/jenkins_home', image:'maven:3.5.0-jdk-8-alpine')
 				{       sh "$pwd"
-					sh "mvn clean install"}
+					sh "sudo mvn clean install"}
        			// archiveArtifacts '**/target/spring-boot-web-jsp-1.0.war'			
 			}}
 	}
