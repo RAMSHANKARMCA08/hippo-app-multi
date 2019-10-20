@@ -7,14 +7,11 @@ pipeline {
 	stage('Build') {
 		steps {  
 			dir("/var/lib/docker/volumes/jenkins_home/_data/workspace/hippo-app/") {
-			echo "##############################"
-			sh "$pwd"
-			sh "touch 1.txt"
-				//withDockerContainer(image:'maven:3.5.0-jdk-8-alpine')
-			//	{       sh "$pwd"
-			//		sh "sudo mvn clean install"}
+			withDockerContainer(image:'maven:3.5.0-jdk-8-alpine')
+				{       //sh "$pwd"
+					sh "sudo mvn clean install"}
        			// archiveArtifacts '**/target/spring-boot-web-jsp-1.0.war'			
-			//}			
+			}			
 			}
 		}
 	}
