@@ -18,11 +18,8 @@ pipeline {
 		steps {  
 			dir("/var/lib/jenkins/workspace/${JOB_NAME}") {
 			echo "$pwd"
-			withDockerContainer(args: '-it --rm --name my-maven-project', image: 'maven') {
-   				 echo "Inside Block"
-				
-			}
-       			// archiveArtifacts '**/target/spring-boot-web-jsp-1.0.war'			
+			sh "docker run -it --rm --name "MyMaven" -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven mvn clean install"
+       			archiveArtifacts '**/target/*.war'			
 			}			
 			}//steps Build ends
 			
