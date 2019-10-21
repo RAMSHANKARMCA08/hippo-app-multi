@@ -44,4 +44,4 @@ pipeline {
             deleteDir() // clean up workspace
         }
     }//post ends
-}//pipeline ends
+}
