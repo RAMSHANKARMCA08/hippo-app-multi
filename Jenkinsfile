@@ -16,10 +16,10 @@ pipeline {
 				node { label 'maven' }
 			}
 		steps {  
-			dir("/var/lib/jenkins/workspace/${JOB_NAME}") {
+			//dir("/var/lib/jenkins/workspace/${JOB_NAME}") {
 			sh "docker run -it --rm --name 'MyMaven' -v $pwd/workspace/${JOB_NAME}:/usr/src/mymaven -w /usr/src/mymaven maven mvn clean install"
        			//archiveArtifacts '**/target/*.war'			
-			}			
+			//}			
 			}//steps Build ends
 			
 		}//stage Build ends
