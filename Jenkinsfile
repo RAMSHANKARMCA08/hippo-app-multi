@@ -41,7 +41,7 @@ post {
         }
 		always {
             echo 'Job completed'
-            deleteDir() // clean up workspace
+            //deleteDir() // clean up workspace
         }
 
     }//post ends
