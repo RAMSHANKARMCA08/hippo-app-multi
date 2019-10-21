@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
     
 	stages {
 	
@@ -24,11 +24,9 @@ pipeline {
 			
 		}//stage Build ends
 	}//stages ends
-	}//pipeline ends
+
 
 post {  
-  node('master')
-   {
         success {
             echo 'I succeeded!'
         }
@@ -45,6 +43,6 @@ post {
             echo 'Job completed'
             deleteDir() // clean up workspace
         }
-   }
+
     }//post ends
-	
+	}//pipeline ends
