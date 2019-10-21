@@ -25,4 +25,26 @@ pipeline {
 		}//stage Build ends
 	}//stages ends
 	}//pipeline ends
+
+post {  
+  node('master')
+   {
+        success {
+            echo 'I succeeded!'
+        }
+        unstable {
+            echo 'I am unstable :/'
+        }
+        failure {
+            echo 'I failed :('
+        }
+        changed {
+            echo 'Things are different...'
+        }
+		always {
+            echo 'Job completed'
+            deleteDir() // clean up workspace
+        }
+   }
+    }//post ends
 	
