@@ -17,9 +17,8 @@ pipeline {
 			}
 		steps {  
 			dir("/var/lib/jenkins/workspace/${JOB_NAME}") {
-			echo "$pwd"
-			sh "docker run -it --rm --name "MyMaven" -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven mvn clean install"
-       			archiveArtifacts '**/target/*.war'			
+			sh "docker run -it --rm --name "MyMaven" -v $(pwd):/usr/src/mymaven -w /usr/src/mymaven maven mvn clean install"
+       			//archiveArtifacts '**/target/*.war'			
 			}			
 			}//steps Build ends
 			
