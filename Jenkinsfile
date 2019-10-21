@@ -26,6 +26,7 @@ pipeline {
 			
 		}//stage Build ends
 	}//stages ends
+	}//pipeline ends
 	post {       
         success {
             echo 'I succeeded!'
@@ -44,4 +45,3 @@ pipeline {
             deleteDir() // clean up workspace
         }
     }//post ends //next line pipeline ends
-} 
