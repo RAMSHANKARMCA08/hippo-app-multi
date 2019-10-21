@@ -16,13 +16,13 @@ pipeline {
 				node { label 'maven' }
 			}
 		steps {  
-			dir("/var/lib/docker/volumes/jenkins_home/_data/workspace/hippo-app-multi/") {
-			//withDockerContainer(args: '-it --rm --name my-maven-project -v /var/lib/docker/volumes/jenkins_home/_data/workspace/hippo-app-multi -w /var/lib/docker/volumes/jenkins_home/_data/workspace/hippo-app mvn -multi install', image: 'maven') {
+			dir("/var/lib/jenkins/workspace/${JOB_NAME}") {
+			withDockerContainer(args: '-it --rm --name my-maven-project -v "$(pwd)" -w "$(pwd)" mvn -multi install', image: 'maven') {
    				 echo "Inside Block"
 			}
        			// archiveArtifacts '**/target/spring-boot-web-jsp-1.0.war'			
 			}			
-			}
+			}//steps Build ends
 			
 		}//stage Build ends
 	}//stages ends
@@ -43,5 +43,5 @@ pipeline {
             echo 'Job completed'
             deleteDir() // clean up workspace
         }
-    }//post ends
-
+    }//post ends //next line pipeline ends
+} 
