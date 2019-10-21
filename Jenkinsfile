@@ -2,11 +2,11 @@ pipeline {
     agent none
     
 	stages {
-	agent { 
-                label 'git'
-            }	
-		
+	
         stage('Git') {
+			agent { 
+                label 'git'
+            }
             steps { git 'https://github.com/RAMSHANKARMCA08/hippo-app-multi.git' }
         }// stage git ends
 	
