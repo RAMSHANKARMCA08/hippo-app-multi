@@ -1,4 +1,4 @@
-//def logLocation = "/var/lib/jenkins/workspace/${JOB_NAME}"
+def logLocation = "/var/lib/jenkins/workspace/${JOB_NAME}"
 //def logname = 'log_' + str(datetime.now().strftime('%Y_%m_%d')) + '.log'
 
 
