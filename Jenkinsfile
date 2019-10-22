@@ -1,4 +1,4 @@
-def logLocation = "$pwd/workspace/${JOB_NAME}"
+def logLocation = "/workspace/${JOB_NAME}"
 def logname = "$logLocation/${JOB_NAME}-${BUILD_NUMBER}.log"
 
 
@@ -12,6 +12,7 @@ pipeline {
 				node { label 'git' }
 			}
             steps {
+		    logLocation = "$pwd/$logLocation"
 		    sh "python /opt/scripts/appendLog.py $logLocation 'Getting Git Data'"
 		    git 'https://github.com/RAMSHANKARMCA08/hippo-app-multi.git' }
         }// stage git ends
