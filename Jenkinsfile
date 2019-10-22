@@ -1,5 +1,5 @@
 def logLocation = "/var/lib/jenkins/workspace/${JOB_NAME}"
-//def logname = 'log_' + str(datetime.now().strftime('%Y_%m_%d')) + '.log'
+def logname = "${JOB_NAME}-${BUILD_NUMBER}.log"
 
 
 pipeline {
