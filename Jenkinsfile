@@ -1,19 +1,13 @@
-def logname = "/opt/jenkins_log/${env.JOB_NAME}/${env.JOB_NAME}-${env.BUILD_NUMBER}.log"
-
-
 pipeline {
-    agent any
+    agent none
     
 	stages {
 	
         stage('Git') {
-			agent {				
+			agent {
 				node { label 'git' }
 			}
-            steps {
-		    sh "echo 'LogLocation : ${logname}'"
-		    sh "python /opt/scripts/appendLog.py ${logname} 'Getting Git Data'"
-		    git 'https://github.com/RAMSHANKARMCA08/hippo-app-multi.git' }
+            steps { git 'https://github.com/RAMSHANKARMCA08/hippo-app-multi.git' }
         }// stage git ends
 	
 	
@@ -29,10 +23,15 @@ pipeline {
 			}//steps Build ends
 			
 		}//stage Build ends
+		
+	stage("Proceed to prod?") {
+            agent none
+            steps { proceedToDeploy() }
+        }
+	
 	}//stages ends
-
-
-post {  
+	}//pipeline ends
+	post {       
         success {
             echo 'I succeeded!'
         }
@@ -47,8 +46,34 @@ post {
         }
 		always {
             echo 'Job completed'
-            //deleteDir() // clean up workspace
+            deleteDir() // clean up workspace
         }
+    }//post ends //next line pipeline ends
+	
+	
+	
 
-    }//post ends
-	}//pipeline ends
+// =============================================================================
+// Initialization steps
+// =============================================================================
+
+def initialize() {
+	env.BuildEnv = "Prod"
+    env.DeployServerIP = "10.0.0.35"
+    env.ServerUSerID = "deploy"
+	env.ServerUSerID = "deploy"
+	}
+
+def proceedToDeploy() {
+    def description = "Choose 'yes' if you want to deploy this build"
+    def proceed = 'no'
+    timeout(time: 10, unit: 'MINUTES') {
+        proceed = input message: "Do you want to deploy the changes?",
+            parameters: [choice(name: "Deploy Code ", choices: "no\nyes",
+                description: description)]
+        if (proceed == 'no') {
+            error("User stopped pipeline execution")
+        }
+    }
+}
+
