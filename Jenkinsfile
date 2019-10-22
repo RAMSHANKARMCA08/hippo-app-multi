@@ -1,4 +1,4 @@
-def logLocation = "/var/lib/jenkins/workspace/${JOB_NAME}"
+def logLocation = "$pwd/workspace/${JOB_NAME}"
 def logname = "${JOB_NAME}-${BUILD_NUMBER}.log"
 
 
