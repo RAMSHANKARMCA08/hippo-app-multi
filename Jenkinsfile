@@ -11,8 +11,8 @@ pipeline {
 			agent {				
 				node { label 'git' }
 			}
-            steps { 
-		    sh "echo '$pwd'"
+            steps {
+		    echo "$pwd"
 		    git 'https://github.com/RAMSHANKARMCA08/hippo-app-multi.git' }
         }// stage git ends
 	
