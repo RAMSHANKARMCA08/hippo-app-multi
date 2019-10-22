@@ -1,5 +1,5 @@
 def logLocation = "$pwd/workspace/${JOB_NAME}"
-def logname = "${JOB_NAME}-${BUILD_NUMBER}.log"
+def logname = "$logLocation/${JOB_NAME}-${BUILD_NUMBER}.log"
 
 
 pipeline {
@@ -12,7 +12,7 @@ pipeline {
 				node { label 'git' }
 			}
             steps {
-		    sh "echo $pwd"
+		    sh "echo $logLocation"
 		    git 'https://github.com/RAMSHANKARMCA08/hippo-app-multi.git' }
         }// stage git ends
 	
