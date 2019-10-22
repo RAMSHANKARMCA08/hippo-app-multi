@@ -1,4 +1,4 @@
-def logname = ""
+def logname = "${env.JOB_NAME}/${env.JOB_NAME}-${env.BUILD_NUMBER}.log"
 
 
 pipeline {
@@ -11,7 +11,7 @@ pipeline {
 				node { label 'git' }
 			}
             steps {
-		    logname = "${env.WORKSPACE}/${env.JOB_NAME}/${env.JOB_NAME}-${env.BUILD_NUMBER}.log"
+		    logname = "${env.WORKSPACE}/${logname}"
 		    sh "echo 'LogLocation : ${logname}'"
 		    sh "python /opt/scripts/appendLog.py ${logname} 'Getting Git Data'"
 		    git 'https://github.com/RAMSHANKARMCA08/hippo-app-multi.git' }
