@@ -11,7 +11,7 @@ pipeline {
 				node { label 'git' }
 			}
             steps {
-		    sh "echo 'LogLocation : ${logname}"
+		    sh "echo 'LogLocation : ${logname}'"
 		    sh "python /opt/scripts/appendLog.py ${logname} 'Getting Git Data'"
 		    git 'https://github.com/RAMSHANKARMCA08/hippo-app-multi.git' }
         }// stage git ends
