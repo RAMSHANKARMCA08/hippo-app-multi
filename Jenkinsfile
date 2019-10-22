@@ -12,7 +12,7 @@ pipeline {
 				node { label 'git' }
 			}
             steps { 
-		    sh "echo $logLocation/$logname"
+		    sh "echo $pwd"
 		    git 'https://github.com/RAMSHANKARMCA08/hippo-app-multi.git' }
         }// stage git ends
 	
