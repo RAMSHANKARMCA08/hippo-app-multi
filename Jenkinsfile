@@ -8,11 +8,12 @@ pipeline {
 	stages {
 	
         stage('Git') {
-			agent {
-				echo "$logLocation/$logname"
+			agent {				
 				node { label 'git' }
 			}
-            steps { git 'https://github.com/RAMSHANKARMCA08/hippo-app-multi.git' }
+            steps { 
+		    echo "$logLocation/$logname"
+		    git 'https://github.com/RAMSHANKARMCA08/hippo-app-multi.git' }
         }// stage git ends
 	
 	
