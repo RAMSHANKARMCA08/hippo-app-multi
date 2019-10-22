@@ -1,4 +1,4 @@
-def logname = "${WORKSPACE}/${JOB_NAME}/${JOB_NAME}-${BUILD_NUMBER}.log"
+def logname = "${env.WORKSPACE}/${env.JOB_NAME}/${env.JOB_NAME}-${env.BUILD_NUMBER}.log"
 
 
 pipeline {
