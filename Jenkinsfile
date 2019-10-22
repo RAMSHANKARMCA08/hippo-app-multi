@@ -1,3 +1,7 @@
+def logLocation = "/var/lib/jenkins/workspace/${JOB_NAME}"
+def logname = 'log_' + str(datetime.now().strftime('%Y_%m_%d')) + '.log'
+
+
 pipeline {
     agent any
     
@@ -5,6 +9,7 @@ pipeline {
 	
         stage('Git') {
 			agent {
+				echo "$logLocation/$logname"
 				node { label 'git' }
 			}
             steps { git 'https://github.com/RAMSHANKARMCA08/hippo-app-multi.git' }
