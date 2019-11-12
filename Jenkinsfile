@@ -1,6 +1,10 @@
 pipeline {
     agent none
-    
+    environment {
+        DISABLE_AUTH = 'true'
+	Deployment_Server  = '10.34.56.12'
+	AWS_SECRET = credentials('AWS_SECRET')
+    		}
 	stages {
 	
         stage('Git') {
