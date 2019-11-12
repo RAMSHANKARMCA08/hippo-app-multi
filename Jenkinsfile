@@ -8,6 +8,9 @@ pipeline {
 	stages {
 	
         stage('Git') {
+		 when {
+          		  branch "master"
+       			 }
 			agent {
 				node { label 'git' }
 			}
@@ -16,6 +19,9 @@ pipeline {
 	
 	
 	stage('Build') {
+		when {
+          		  branch "master"
+       			 }
 			agent {
 				node { label 'maven' }
 			}
