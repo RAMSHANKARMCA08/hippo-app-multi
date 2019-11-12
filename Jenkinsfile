@@ -36,6 +36,14 @@ pipeline {
 		
 	stage("Proceed to prod?") {
             agent none
+	     when {
+      		 not {
+     		     anyOf {
+    			        branch 'master';
+     			       branch 'staging'
+      			    }
+     			  }
+  		 }
             steps { proceedToDeploy() }
         }
 	
