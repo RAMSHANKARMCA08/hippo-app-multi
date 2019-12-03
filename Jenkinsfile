@@ -23,7 +23,7 @@ pipeline {
           		  branch "master"
        			 }
 			agent {
-				node { label 'maven' }
+				node { label 'maven' & 'docker' }
 			}
 		steps {  
 			//dir("/var/lib/jenkins/workspace/${JOB_NAME}") {
